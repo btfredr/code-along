@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
-import API from '../../constants';
+import { API } from '../../constants/Api';
+import axios from 'axios';
 
 function Home() {
-    const [books, setBooks] = useState([]);
+    const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(function () {
         async function fetchData() {
             try {
-                const response = await fetch(API);
-
-                if (response.ok) {
-                    const json = await response.json();
-                    console.log(json);
-                    setBooks(json.data);
+                const response = await axios.get(`${API}/cards`);
+                console.log(response);
+                if (response.status === 200) {
+                    setCards(response.data.cards);
                 } else {
                     setError('An error occured');
                 }
@@ -37,8 +36,8 @@ function Home() {
 
     return (
         <>
-            {books.map(function (book) {
-                return <div key={book.id}>{book.title}</div>;
+            {cards.map(function (card) {
+                return <div key={card.id}>{card.title}</div>;
             })}
         </>
     );
