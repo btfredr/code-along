@@ -37,7 +37,7 @@ function Home() {
     return (
         <>
             {cards.map(function (card) {
-                return <div key={card.id}>{card.title}</div>;
+                return <div key={card.id}>{card.name}</div>;
             })}
         </>
     );
