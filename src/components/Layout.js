@@ -13,7 +13,7 @@ const Layout = () => {
     return (
         <Router>
             <Navbar bg='light' variant='light' expand='lg'>
-                <Navbar.Brand href='/'>React App</Navbar.Brand>
+                <Navbar.Brand href='/'>Magic The Gathering</Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className='mr-auto'>

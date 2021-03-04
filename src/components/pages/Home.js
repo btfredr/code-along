@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { API } from '../../constants/Api';
 import axios from 'axios';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Home() {
     const [cards, setCards] = useState([]);
@@ -37,7 +38,19 @@ function Home() {
     return (
         <>
             {cards.map(function (card) {
-                return <div key={card.id}>{card.name}</div>;
+                return (
+                    <Container>
+                        <Row>
+                            <Col>
+                                <div className="cards" key={card.id}>
+                                    <h2 className="cards__title">{card.name}</h2>
+                                    <img className="cards__img" src={card.imageUrl} alt={card.name} />
+                                </div>;
+                            </Col>
+                        </Row>
+                    </Container>
+                )
+
             })}
         </>
     );
